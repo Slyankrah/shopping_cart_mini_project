@@ -16,8 +16,6 @@ DELIVERY_RATES = [
     (30, 100),   # >15 and <=30 => 100 Rs
 ]
 
-# TAX_RATE = 0.0
-
 def print_menu():
     print("\nWelcome to the Store — Available Items")
     print("-" * 44)
@@ -137,15 +135,12 @@ def print_bill(cart, customer, delivery_charge):
         print(f"{name:<25} {qty:>5} {price:>12.2f} {total:>12.2f}")
     print("-"*60)
     print(f"{'Subtotal':<44} {subtotal:>12.2f}")
-    tax = subtotal * TAX_RATE
-    if TAX_RATE:
-        print(f"{'Tax':<44} {tax:>12.2f}")
     if delivery_charge is None:
         print(f"{'Delivery (pickup)':<44} {0.00:>12.2f}")
-        grand_total = subtotal + tax
+        grand_total = subtotal
     else:
         print(f"{'Delivery charge':<44} {delivery_charge:>12.2f}")
-        grand_total = subtotal + tax + delivery_charge
+        grand_total = subtotal + delivery_charge
     print("="*60)
     print(f"{'GRAND TOTAL (Rs)':<44} {grand_total:>12.2f}")
     print("="*60)
